@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
   app: {
     head: {
       title: 'opinionated nuxt',
@@ -20,10 +19,12 @@ export default defineNuxtConfig({
   },
 
   modules: ['@vueuse/nuxt', '@unocss/nuxt'],
+
   css: [
     '@unocss/reset/tailwind.css',
     'vue-toast-notification/dist/theme-sugar.css',
   ],
+
   imports: {
     imports: [
       {
@@ -36,9 +37,12 @@ export default defineNuxtConfig({
       },
     ],
   },
+
   vite: {
     define: {
-      global: 'globalThis',
+      'window.global': 'globalThis',
     },
   },
+
+  devtools: { enabled: true },
 })
