@@ -6,7 +6,10 @@
     "words": [
         "consola",
         "hashconnect",
-        "Repu"
+        "nuxt",
+        "Repu",
+        "unocss",
+        "vueuse"
     ],
     "ignoreWords": [],
     "import": []
