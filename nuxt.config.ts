@@ -38,20 +38,9 @@ export default defineNuxtConfig({
     ],
   },
 
-  nitro: {
-    esbuild: {
-      options: {
-        target: 'esnext',
-      },
-    },
-  },
-
   vite: {
     define: {
       'window.global': 'globalThis',
-    },
-    build: {
-      target: 'esnext',
     },
   },
 
