@@ -30,6 +30,10 @@ export default defineNuxtConfig({
         name: 'nanoid',
         from: 'nanoid',
       },
+      {
+        name: 'consola',
+        from: 'consola',
+      },
     ],
   },
   vite: {
