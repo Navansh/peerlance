@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare && husky install"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.39.6",
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "@nuxt/devtools": "^0.6.6",
+    "@unocss/eslint-config": "^0.53.4",
+    "@unocss/nuxt": "^0.53.4",
+    "@unocss/reset": "^0.53.4",
+    "@vueuse/nuxt": "^10.2.1",
+    "eslint": "^8.43.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "nuxt": "^3.6.1",
+    "prettier": "^2.8.8"
+  },
+  "volta": {
+    "node": "18.16.1"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.8",
+    "nanoid": "^4.0.2",
+    "vue-toast-notification": "^3.1.1"
+  }
+}
