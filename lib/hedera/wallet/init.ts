@@ -11,10 +11,12 @@ const appMetadata = {
   url: 'http://localhost:30000',
 }
 
-const previousData = await hashconnect.init(appMetadata, 'testnet', true)
+export async function initHashConnect() {
+  const previousData = await hashconnect.init(appMetadata, 'testnet', true)
 
-if (previousData.savedPairings.length)
-  userAccountId.value = previousData.savedPairings[0].accountIds[0]
+  if (previousData.savedPairings.length)
+    userAccountId.value = previousData.savedPairings[0].accountIds[0]
+}
 
 hashconnect.foundExtensionEvent.once(() => {
   isWalletAvailable.value = true
