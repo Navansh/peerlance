@@ -28,6 +28,7 @@
     "node": "18.16.1"
   },
   "dependencies": {
+    "consola": "^3.2.2",
     "dayjs": "^1.11.8",
     "hashconnect": "^0.2.4",
     "nanoid": "^4.0.2",
