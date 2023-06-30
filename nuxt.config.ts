@@ -32,4 +32,9 @@ export default defineNuxtConfig({
       },
     ],
   },
+  vite: {
+    define: {
+      global: 'globalThis',
+    },
+  },
 })
