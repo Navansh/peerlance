@@ -29,7 +29,7 @@ const PATHS = [
 </script>
 
 <template>
-  <div class="bg-[#212328]" mx-4 h-full w-full flex flex-col justify-between rounded-xl px-4 py-6>
+  <div class="bg-[#212328]" h-full w-full flex flex-col justify-between rounded-xl px-4 py-6>
     <div flex items-center gap-2 px-4>
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g>
