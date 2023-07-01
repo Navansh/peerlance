@@ -38,6 +38,10 @@ export default defineNuxtConfig({
     ],
   },
 
+  build: {
+    transpile: ['ws'],
+  },
+
   vite: {
     define: {
       'window.global': 'globalThis',
