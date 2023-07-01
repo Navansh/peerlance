@@ -1,3 +1,7 @@
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
+import rollupNodePolyFill from 'rollup-plugin-node-polyfills'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
@@ -43,8 +47,22 @@ export default defineNuxtConfig({
       'window.global': 'globalThis',
     },
     build: {
-      commonjsOptions: {
-        transformMixedEsModules: true,
+      rollupOptions: {
+        plugins: [
+          // @ts-expect-error some issue
+          rollupNodePolyFill(),
+        ],
+      },
+    },
+    optimizeDeps: {
+      esbuildOptions: {
+        plugins: [
+          NodeGlobalsPolyfillPlugin({
+            process: true,
+            buffer: true,
+          }),
+          NodeModulesPolyfillPlugin(),
+        ],
       },
     },
   },
