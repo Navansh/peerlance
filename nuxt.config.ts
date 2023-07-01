@@ -42,6 +42,11 @@ export default defineNuxtConfig({
     define: {
       'window.global': 'globalThis',
     },
+    build: {
+      commonjsOptions: {
+        transformMixedEsModules: true,
+      },
+    },
   },
 
   devtools: { enabled: true },
