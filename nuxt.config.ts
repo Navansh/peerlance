@@ -45,17 +45,7 @@ export default defineNuxtConfig({
       'window.global': 'globalThis',
     },
     plugins: [
-      nodePolyfills({
-        exclude: [
-          'fs',
-        ],
-        globals: {
-          Buffer: true,
-          global: true,
-          process: true,
-        },
-        protocolImports: true,
-      }),
+      nodePolyfills(),
     ],
   },
 
