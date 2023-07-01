@@ -49,14 +49,7 @@ async function signIn() {
       </div>
 
       <div>
-        <button transform rounded-full bg-white px-4 py-2 transition-all duration-700 @click="signIn">
-          <div v-if="authLoading" i-logos-google-marketing-platform animate-spin />
-          <div v-else flex items-center justify-center gap-2 rounded-full bg-white font-bold text-black>
-            <div i-logos-google-icon />
-
-            Continue
-          </div>
-        </button>
+        <HederaConnect />
       </div>
     </div>
   </div>
