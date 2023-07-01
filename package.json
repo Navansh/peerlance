@@ -7,6 +7,7 @@
     "lint:fix": "eslint . --fix",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "db:migrate": "prisma migrate dev --name",
     "postinstall": "nuxt prepare && husky install"
   },
   "devDependencies": {
@@ -31,6 +32,7 @@
   },
   "dependencies": {
     "@formkit/nuxt": "^0.17.4",
+    "@prisma/client": "4.16.2",
     "bufferutil": "^4.0.7",
     "consola": "^3.2.2",
     "dayjs": "^1.11.8",
