@@ -35,6 +35,11 @@ export default defineConfig({
       },
     }),
   ],
+  theme: {
+    colors: {
+      brand: '#d6fe63',
+    },
+  },
   transformers: [
     transformerDirectives(),
     transformerVariantGroup(),
