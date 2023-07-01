@@ -3,7 +3,7 @@ import { hashconnect, initHashConnect } from '@/lib/hedera/wallet/init'
 
 await initHashConnect()
 
-consola.info('Hello, hashconnect!', hashconnect)
+consola.withTag('meta').info('Hello, hashconnect!', hashconnect)
 </script>
 
 <template>

@@ -23,14 +23,14 @@ hashconnect.foundExtensionEvent.once(() => {
 })
 
 hashconnect.pairingEvent.once((walletMetadata) => {
-  consola.info('pairingEvent', walletMetadata)
+  consola.withTag('Hedera').info('pairingEvent', walletMetadata)
 
   userAccountId.value = walletMetadata.pairingData?.accountIds[0] ?? null
   isWalletConnected.value = true
 })
 
 watch(isWalletAvailable, (isAvailable) => {
-  consola.info('isWalletAvailable', isAvailable)
+  consola.withTag('Hedera').info('isWalletAvailable', isAvailable)
 })
 
 export function connectToWallet() {
