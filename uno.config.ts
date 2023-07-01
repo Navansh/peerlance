@@ -21,7 +21,7 @@ export default defineConfig({
     presetWebFonts({
       fonts: {
         sans: {
-          name: 'Inter',
+          name: 'Poppins',
           weights: new Array(9).fill(0).map((_, i) => i * 100 + 100),
         },
         serif: {
