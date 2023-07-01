@@ -13,8 +13,6 @@
     "@antfu/eslint-config": "^0.39.6",
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
-    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
-    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@nuxt/devtools": "^0.6.6",
     "@unocss/eslint-config": "^0.53.4",
     "@unocss/nuxt": "^0.53.4",
@@ -24,8 +22,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "nuxt": "^3.6.1",
-    "prettier": "^2.8.8",
-    "rollup-plugin-node-polyfills": "^0.2.1"
+    "prettier": "^2.8.8"
   },
   "volta": {
     "node": "18.16.1"
