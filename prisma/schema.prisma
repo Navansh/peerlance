@@ -22,7 +22,7 @@ model Project {
   id            Int      @id @default(autoincrement())
   creatorId     String
   projectId     String   @unique
-  hederaTopicId String
+  hederaTopicId String   @unique
   name          String
   description   String
   createdAt     DateTime @default(now())
