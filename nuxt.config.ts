@@ -1,5 +1,3 @@
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
@@ -44,9 +42,6 @@ export default defineNuxtConfig({
     define: {
       'window.global': 'globalThis',
     },
-    plugins: [
-      nodePolyfills(),
-    ],
   },
 
   devtools: { enabled: true },
