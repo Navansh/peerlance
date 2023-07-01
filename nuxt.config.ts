@@ -1,11 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  routeRules: {
-    '/hedera/signup': { static: true },
-  },
-
   app: {
     head: {
+      script: [{
+        children: 'window.global = globalThis || global',
+      }],
       title: 'PeerLance',
       meta: [
         {
