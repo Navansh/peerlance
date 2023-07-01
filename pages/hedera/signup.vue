@@ -1,30 +1,14 @@
 <script setup lang="ts">
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
 import { signedInUser } from '@/utils/store'
 
 definePageMeta({
   layout: 'login',
 })
 
-const authLoading = ref(false)
+if (!signedInUser.value)
+  navigateTo('/login')
 
-async function signIn() {
-  authLoading.value = true
-  const auth = getAuth()
-  const provider = new GoogleAuthProvider()
-
-  try {
-    const user = await signInWithPopup(auth, provider)
-    signedInUser.value = user.user
-    navigateTo('/hedera/signup')
-  }
-  catch (error) {
-    consola.withTag('[FIREBASE] AUTH').error(error)
-  }
-  finally {
-    authLoading.value = false
-  }
-}
+consola.withTag('Hedera Signup').info({ signedInUser: signedInUser.value })
 </script>
 
 <template>
