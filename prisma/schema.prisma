@@ -19,14 +19,15 @@ model User {
 }
 
 model Project {
-  id          Int      @id @default(autoincrement())
-  creatorId   String
-  projectId   String   @unique
-  name        String
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-  Links       Links[]
+  id            Int      @id @default(autoincrement())
+  creatorId     String
+  projectId     String   @unique
+  hederaTopicId String
+  name          String
+  description   String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+  Links         Links[]
 
   @@index([projectId], name: "projectId")
   @@index([creatorId], name: "creatorId")
