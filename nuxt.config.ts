@@ -14,7 +14,7 @@ export default defineNuxtConfig({
       link: [
         {
           rel: 'icon',
-          href: '/oink.svg',
+          href: '/logo.svg',
         },
       ],
     },
