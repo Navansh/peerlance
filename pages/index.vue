@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import { initHashConnect } from '@/lib/hedera/wallet/init'
-
-await initHashConnect()
-
-consola.withTag('meta').info('Hello, hashconnect!')
 </script>
 
 <template>
