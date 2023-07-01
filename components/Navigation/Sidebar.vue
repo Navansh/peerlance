@@ -21,7 +21,7 @@ const PATHS = [
     icon: 'i-tabler-chart-line',
   },
   {
-    name: 'Badges Earned',
+    name: 'Badges',
     href: '/badges',
     icon: 'i-tabler-badge',
   },
@@ -47,7 +47,7 @@ const PATHS = [
       <NavigationNavItem v-for="path in PATHS" :key="path.href" :name="path.name" :href="path.href" :icon="path.icon" />
     </div>
 
-    <div bg-brand w-full rounded-md px-8 py-2 text-center text-black>
+    <div w-full rounded-md bg-brand px-8 py-2 text-center text-sm text-black>
       Post new project
     </div>
   </div>
