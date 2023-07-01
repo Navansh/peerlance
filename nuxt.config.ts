@@ -4,7 +4,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'opinionated nuxt',
+      title: 'PeerLance',
       meta: [
         {
           name: 'description',
