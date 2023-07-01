@@ -5,10 +5,10 @@ import { isWalletAvailable, isWalletConnected, userAccountId } from './store'
 const hashconnect = new HashConnect()
 
 const appMetadata = {
-  name: 'Repu',
-  description: 'Repu~',
-  icon: 'https://repu-gilt.vercel.app/oink.svg',
-  url: 'https://repu-gilt.vercel.app',
+  name: 'PeerLance',
+  description: 'PeerLance~',
+  icon: 'https://peerlance.club/logo.svg',
+  url: 'https://peerlance.club',
 }
 
 export async function initHashConnect() {
