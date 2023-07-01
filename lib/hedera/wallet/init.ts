@@ -2,13 +2,13 @@ import { HashConnect } from 'hashconnect'
 
 import { isWalletAvailable, isWalletConnected, userAccountId } from './store'
 
-const hashconnect = new HashConnect(true)
+const hashconnect = new HashConnect()
 
 const appMetadata = {
   name: 'Repu',
   description: 'Repu~',
-  icon: 'http://localhost:30000/icon.png',
-  url: 'http://localhost:30000',
+  icon: 'https://repu-gilt.vercel.app/oink.svg',
+  url: 'https://repu-gilt.vercel.app',
 }
 
 export async function initHashConnect() {
