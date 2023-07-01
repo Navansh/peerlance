@@ -49,7 +49,9 @@ async function signIn() {
       </div>
 
       <div>
-        <HederaConnect />
+        <ClientOnly>
+          <HederaConnect />
+        </ClientOnly>
       </div>
     </div>
   </div>
