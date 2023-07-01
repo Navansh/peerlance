@@ -51,6 +51,13 @@ async function signIn() {
       <div>
         <ClientOnly>
           <HederaConnect />
+
+          <template #fallback>
+            <div flex items-center gap-2>
+              <div i-eos-icons-loading />
+              Loading
+            </div>
+          </template>
         </ClientOnly>
       </div>
     </div>
