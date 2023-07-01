@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
+import { signedInUser } from '@/utils/store'
 
 definePageMeta({
   layout: 'login',
@@ -13,7 +14,8 @@ async function signIn() {
   const provider = new GoogleAuthProvider()
 
   try {
-    await signInWithPopup(auth, provider)
+    const user = await signInWithPopup(auth, provider)
+    signedInUser.value = user.user
   }
   catch (error) {
     consola.withTag('[FIREBASE] AUTH').error(error)
