@@ -30,6 +30,7 @@
     "node": "18.16.1"
   },
   "dependencies": {
+    "@formkit/nuxt": "^0.17.4",
     "bufferutil": "^4.0.7",
     "consola": "^3.2.2",
     "dayjs": "^1.11.8",
