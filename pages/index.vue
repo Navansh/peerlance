@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { getAuth } from 'firebase/auth'
 import type { Project } from '@/utils/types'
+import { associateToken } from '@/lib/hedera/sdk/helpers'
 
+const hederaData = useHederaClient()
 const userName = ref('')
 const projects = ref<Project[]>([])
 
@@ -14,6 +16,10 @@ async function sendTokenClicked(project: Project) {
 
   const { $toast } = useNuxtApp()
   $toast.info('Initializing to send tokens...')
+
+  $toast.info('Checking token association status')
+  const status = await associateToken(hederaData, project.User.hederaAccountId)
+  $toast.success(`Token associated | Status: ${status}`)
 }
 
 onMounted(async () => {

@@ -1,4 +1,4 @@
-import { FileAppendTransaction, FileContentsQuery, FileCreateTransaction, Hbar, TopicCreateTransaction } from '@hashgraph/sdk'
+import { AccountId, FileAppendTransaction, FileContentsQuery, FileCreateTransaction, Hbar, TokenAssociateTransaction, TokenId, TopicCreateTransaction } from '@hashgraph/sdk'
 import type { HederaComposable } from '@/composables/useHederaClient'
 
 export async function createTopic(hederaData: HederaComposable, projectName: string, projectId: string) {
@@ -66,4 +66,23 @@ export async function getFileContents(hederaData: HederaComposable, fileId: stri
   return decoded
 }
 
-// Consensus Service
+export async function associateToken(hederaData: HederaComposable, userId: string) {
+  const userAccountId = AccountId.fromString(userId)
+  const tokenId = TokenId.fromString('0.0.15032478')
+
+  try {
+    const transaction = new TokenAssociateTransaction()
+      .setAccountId(userAccountId)
+      .setTokenIds([tokenId])
+      .freezeWith(hederaData.client)
+
+    const txResponse = await transaction.execute(hederaData.client)
+    const receipt = await txResponse.getReceipt(hederaData.client)
+
+    return receipt.status.toString()
+  }
+  catch (error: any) {
+    if (error.message.includes('TOKEN_ALREADY_ASSOCIATED_TO_ACCOUNT'))
+      return 'Already Associated'
+  }
+}
