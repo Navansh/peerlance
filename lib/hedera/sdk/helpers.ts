@@ -1,15 +1,16 @@
-import { type Client, FileAppendTransaction, FileContentsQuery, FileCreateTransaction, Hbar, TopicCreateTransaction } from '@hashgraph/sdk'
+import { FileAppendTransaction, FileContentsQuery, FileCreateTransaction, Hbar, TopicCreateTransaction } from '@hashgraph/sdk'
 import type { HederaComposable } from '@/composables/useHederaClient'
 
-export async function createTopic(client: Client, projectName: string) {
+export async function createTopic(hederaData: HederaComposable, projectName: string, projectId: string) {
+  const client = hederaData.client
   const topicCreateTransaction = new TopicCreateTransaction()
-    .setTopicMemo(`SourceOfTruth Tracker for Project: ${projectName}`)
+    .setTopicMemo(`SourceOfTruth Tracker for Project: ${projectName} | ID: ${projectId}`)
 
   const txResponse = await topicCreateTransaction.execute(client)
   const receipt = await txResponse.getReceipt(client)
   const newTopicId = receipt.topicId
 
-  return newTopicId
+  return newTopicId?.toString()
 }
 
 export async function createFile(hederaData: HederaComposable, projectName: string) {
@@ -59,3 +60,5 @@ export async function getFileContents(hederaData: HederaComposable, fileId: stri
 
   return decoded
 }
+
+// Consensus Service
