@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const projetName = ref('')
+const projectName = ref('')
 const projectDescription = ref('')
 </script>
 
@@ -15,7 +15,7 @@ const projectDescription = ref('')
 
     <div flex flex-col gap-4>
       <div w-full flex items-center gap-4 text-black>
-        <input v-model="projetName" w-full rounded-md px-4 py-2 placeholder="Enter Name" type="text">
+        <input v-model="projectName" w-full rounded-md px-4 py-2 placeholder="Enter Name" type="text">
         <input v-model="projectDescription" w-full rounded-md px-4 py-2 placeholder="Enter Description" type="text">
       </div>
     </div>
