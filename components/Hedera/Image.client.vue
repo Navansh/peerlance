@@ -27,7 +27,7 @@ onMounted(async () => {
       <div i-eos-icons-loading />
       Loading image from Hedera File Service
     </div>
-    <img v-else h-48 w-full object-cover object-center :src="fileData" alt="thumbnail">
+    <img v-else h-48 w-full rounded-t-xl object-cover object-center :src="fileData" alt="thumbnail">
   </div>
 </template>
 
