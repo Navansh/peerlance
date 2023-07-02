@@ -14,8 +14,8 @@ const appMetadata = {
 export async function initHashConnect() {
   const previousData = await hashconnect.init(appMetadata, 'testnet', true)
 
-  if (previousData.savedPairings.length)
-    userAccountId.value = previousData.savedPairings[0].accountIds[0]
+  // if (previousData.savedPairings.length)
+  //   userAccountId.value = previousData.savedPairings[0].accountIds[0]
   isWalletConnected.value = true
 }
 
