@@ -1,4 +1,4 @@
-import { type Client, FileAppendTransaction, FileCreateTransaction, TopicCreateTransaction } from '@hashgraph/sdk'
+import { type Client, FileAppendTransaction, FileCreateTransaction, Hbar, TopicCreateTransaction } from '@hashgraph/sdk'
 import type { HederaComposable } from '@/composables/useHederaClient'
 
 export async function createTopic(client: Client, projectName: string) {
@@ -15,6 +15,8 @@ export async function createTopic(client: Client, projectName: string) {
 export async function createFile(hederaData: HederaComposable, projectName: string) {
   const transaction = new FileCreateTransaction()
     .setFileMemo(`Thumbnail image for Project: ${projectName}`)
+    .setMaxTransactionFee(new Hbar(10))
+    .setKeys([hederaData.filePublicKey])
     .freezeWith(hederaData.client)
 
   const signTx = await transaction.sign(hederaData.filePrivateKey)
@@ -32,9 +34,9 @@ export async function appendToFile(hederaData: HederaComposable, fileId: string,
   const client = hederaData.client
   const transaction = new FileAppendTransaction()
     .setFileId(fileId)
-    .setTransactionMemo(`Chunk for Project: ${projectName}`)
     .setContents(chunk)
-    .freezeWith(client)
+    .setMaxTransactionFee(new Hbar(10))
+    .freezeWith(hederaData.client)
 
   const signTx = await transaction.sign(hederaData.filePrivateKey)
   const txResponse = await signTx.execute(client)
