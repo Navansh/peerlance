@@ -10,7 +10,10 @@ export async function createTopic(hederaData: HederaComposable, projectName: str
   const receipt = await txResponse.getReceipt(client)
   const newTopicId = receipt.topicId
 
-  return newTopicId?.toString()
+  return {
+    transactionId: txResponse.transactionId.toString(),
+    topicId: newTopicId?.toString(),
+  }
 }
 
 export async function createFile(hederaData: HederaComposable, projectName: string) {
@@ -32,7 +35,7 @@ export async function createFile(hederaData: HederaComposable, projectName: stri
   }
 }
 
-export async function appendToFile(hederaData: HederaComposable, fileId: string, chunk: string, chunkId: string, projectName: string) {
+export async function appendToFile(hederaData: HederaComposable, fileId: string, chunk: string, chunkId: number, projectName: string) {
   const client = hederaData.client
   const transaction = new FileAppendTransaction()
     .setFileId(fileId)
