@@ -16,6 +16,7 @@ export async function createTopic(hederaData: HederaComposable, projectName: str
 export async function createFile(hederaData: HederaComposable, projectName: string) {
   const transaction = new FileCreateTransaction()
     .setFileMemo(`Thumbnail image for Project: ${projectName}`)
+    .setTransactionMemo(`Thumbnail image for Project: ${projectName}`)
     .setMaxTransactionFee(new Hbar(10))
     .setKeys([hederaData.filePublicKey])
     .freezeWith(hederaData.client)
@@ -31,11 +32,12 @@ export async function createFile(hederaData: HederaComposable, projectName: stri
   }
 }
 
-export async function appendToFile(hederaData: HederaComposable, fileId: string, chunk: string, projectName: string) {
+export async function appendToFile(hederaData: HederaComposable, fileId: string, chunk: string, chunkId: string, projectName: string) {
   const client = hederaData.client
   const transaction = new FileAppendTransaction()
     .setFileId(fileId)
     .setContents(chunk)
+    .setTransactionMemo(`Thumbnail Chunk | Chunk ID: ${chunkId} | Project: ${projectName}`)
     .setMaxTransactionFee(new Hbar(10))
     .freezeWith(hederaData.client)
 
