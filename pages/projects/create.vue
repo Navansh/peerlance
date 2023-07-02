@@ -63,7 +63,7 @@ async function createProject() {
     ],
   }
 
-  await $fetch('/api/projects', {
+  await $fetch('/api/project', {
     method: 'POST',
     body: project,
   })
@@ -75,6 +75,14 @@ watch(imageBase64, async () => {
     return
   const k = await splitFileIntoChunksAndUploadToHedera(hederaData, imageBase64.value, projectName.value)
   consola.info('k', k)
+})
+
+onMounted(() => {
+  totalChunks.value = 0
+  currentChunk.value = 0
+  currentFileId.value = null
+  currentFileTransactionId.value = null
+  fileUploadTransactions.value = []
 })
 </script>
 
