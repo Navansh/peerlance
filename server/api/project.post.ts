@@ -3,6 +3,18 @@ import prisma from '../prisma'
 export default defineEventHandler(async (event) => {
   const projectData = await readBody(event)
 
+  if (projectData.links) {
+    for (const link of projectData.links) {
+      await prisma.links.create({
+        data: {
+          projectId: projectData.projectId,
+          url: link.url,
+          linkId: nanoid(),
+        },
+      })
+    }
+  }
+
   const id = await prisma.project.create({
     data: {
       creatorId: projectData.creatorId,
