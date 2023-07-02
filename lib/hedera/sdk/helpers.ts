@@ -87,7 +87,7 @@ export async function associateToken(hederaData: HederaComposable, userId: strin
   }
 }
 
-export async function transferToken(hederaData: HederaComposable, userId: string, amount: number) {
+export async function transferToken(hederaData: HederaComposable, userId: string, amount: number, projectName: string, projectId: string, userName: string) {
   const userACcountId = AccountId.fromString(userId)
   const tokenId = TokenId.fromString('0.0.15032478')
 
@@ -95,6 +95,7 @@ export async function transferToken(hederaData: HederaComposable, userId: string
   const transaction = new TransferTransaction()
     .addTokenTransfer(tokenId, client.operatorAccountId!, -1 * amount)
     .addTokenTransfer(tokenId, userACcountId, amount)
+    .setTransactionMemo(`Transfer ${amount} tokens from ${userName} to Project: ${projectName} | Project ID: ${projectId}`)
     .freezeWith(client)
 
   const txResponse = await transaction.execute(client)

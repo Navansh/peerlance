@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getAuth } from 'firebase/auth'
 import type { Project } from '@/utils/types'
-import { associateToken } from '@/lib/hedera/sdk/helpers'
+import { associateToken, transferToken } from '@/lib/hedera/sdk/helpers'
 
 const hederaData = useHederaClient()
 const userName = ref('')
@@ -14,12 +14,23 @@ async function sendTokenClicked(project: Project) {
   if (!amount)
     return
 
+  const auth = getAuth()
+  const user = auth.currentUser
+
   const { $toast } = useNuxtApp()
   $toast.info('Initializing to send tokens...')
 
   $toast.info('Checking token association status')
   const status = await associateToken(hederaData, project.User.hederaAccountId)
   $toast.success(`Token associated | Status: ${status}`)
+
+  $toast.info('Sending tokens...')
+  const { transactionId } = await transferToken(hederaData, project.User.hederaAccountId, Number(amount), project.name, project.projectId, user?.displayName || 'No Name')
+
+  $toast.success(`Tokens sent | Transaction ID: <a target="_blank" class="text-[#222c56] underline hover:decoration-double  hover:" href="https://hashscan.io/testnet/transaction/${transactionId}">${transactionId}</a>`, {
+    duration: 10000,
+    pauseOnHover: true,
+  })
 }
 
 onMounted(async () => {
