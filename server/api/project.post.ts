@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid'
 import prisma from '../prisma'
 
 export default defineEventHandler(async (event) => {
