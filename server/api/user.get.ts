@@ -4,16 +4,11 @@ export default defineEventHandler(async (event) => {
   const requestQuery = getQuery(event)
   const { userId } = requestQuery
 
-  const projects = await prisma.project.findMany({
+  const userData = await prisma.user.findFirst({
     where: {
-      creatorId: userId as string || undefined,
-    },
-
-    include: {
-      Links: true,
-      User: true,
+      userId: userId! as string,
     },
   })
 
-  return projects
+  return userData
 })

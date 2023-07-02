@@ -10,6 +10,7 @@ export interface Project {
   updatedAt: string
   userId: any
   Links: Link[]
+  User: User
 }
 
 export interface Link {
@@ -17,6 +18,16 @@ export interface Link {
   linkId: string
   projectId: string
   url: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface User {
+  id: number
+  userId: string
+  email: string
+  hederaAccountId: string
+  name: string
   createdAt: string
   updatedAt: string
 }

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { getAuth } from 'firebase/auth'
+import { userAccountId } from '@/lib/hedera/wallet/store'
 import app from '@/utils/firebase'
 
 const loading = ref(true)
@@ -9,9 +10,24 @@ consola.withTag('INIT').info('Hello, Firebase!', app)
 onMounted(async () => {
   const auth = getAuth()
 
-  auth.onAuthStateChanged((user) => {
+  auth.onAuthStateChanged(async (user) => {
     consola.withTag('INIT').info('user: ', user)
     if (user) {
+      const userInfo = await $fetch('/api/user', {
+        method: 'get',
+        query: {
+          userId: user.uid,
+        },
+      })
+
+      if (!userInfo)
+        navigateTo('/login')
+
+      // @ts-expect-error untyped
+      userAccountId.value = userInfo.hederaAccountId
+
+      consola.withTag('INIT').info('userInfo: ', userInfo)
+
       loading.value = false
       navigateTo('/')
     }
