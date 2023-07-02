@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@formkit/nuxt": "^0.17.4",
+    "@hashgraph/sdk": "^2.29.0",
     "@prisma/client": "4.16.2",
     "bufferutil": "^4.0.7",
     "consola": "^3.2.2",

@@ -53,4 +53,30 @@ export default defineNuxtConfig({
   },
 
   devtools: { enabled: true },
+
+  runtimeConfig: {
+    hedera: {
+      operator: {
+        accountId: process.env.HEDERA_OPERATOR_ACCOUNT_ID,
+        privateKey: process.env.HEDERA_OPERATOR_PRIVATE_KEY,
+      },
+      file: {
+        publicKey: process.env.HEDERA_FILE_PUBLIC_KEY,
+        privateKey: process.env.HEDERA_FILE_PRIVATE_KEY,
+      },
+    },
+
+    public: {
+      hedera: {
+        operator: {
+          accountId: process.env.HEDERA_OPERATOR_ACCOUNT_ID,
+          privateKey: process.env.HEDERA_OPERATOR_PRIVATE_KEY,
+        },
+        file: {
+          publicKey: process.env.HEDERA_FILE_PUBLIC_KEY,
+          privateKey: process.env.HEDERA_FILE_PRIVATE_KEY,
+        },
+      },
+    },
+  },
 })
