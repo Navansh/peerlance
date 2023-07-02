@@ -47,9 +47,9 @@ const PATHS = [
       <NavigationNavItem v-for="path in PATHS" :key="path.href" :name="path.name" :href="path.href" :icon="path.icon" />
     </div>
 
-    <div w-full rounded-md bg-brand px-8 py-2 text-center text-sm text-black>
+    <NuxtLink to="/projects/create" w-full rounded-md bg-brand px-8 py-2 text-center text-sm text-black>
       Post new project
-    </div>
+    </NuxtLink>
   </div>
 </template>
 
