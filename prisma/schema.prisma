@@ -9,13 +9,14 @@ datasource db {
 }
 
 model User {
-  id              Int      @id @default(autoincrement())
-  userId          String   @unique
-  email           String   @unique
+  id              Int       @id @default(autoincrement())
+  userId          String    @unique
+  email           String    @unique
   hederaAccountId String
   name            String
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @default(now()) @updatedAt
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now()) @updatedAt
+  projects        Project[]
 }
 
 model Project {
@@ -28,6 +29,8 @@ model Project {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @default(now()) @updatedAt
   Links         Links[]
+  User          User?    @relation(fields: [creatorId], references: [userId])
+  userId        Int?
 
   @@index([projectId], name: "projectId")
   @@index([creatorId], name: "creatorId")
