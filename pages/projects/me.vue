@@ -57,7 +57,7 @@ onMounted(async () => {
 <template>
   <div h-full flex flex-col gap-6>
     <h1 text-2xl font-bold>
-      Hello, <span text-brand underline="~ wavy brand">{{ userName }},</span>
+      Hello <span text-brand underline="~ wavy brand">{{ userName }},</span>
     </h1>
 
     <div v-if="projects.length" grid grid-cols-3 gap-4>
