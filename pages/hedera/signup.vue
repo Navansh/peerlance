@@ -34,7 +34,7 @@ consola.withTag('Hedera Signup').info({ signedInUser: signedInUser.value })
 
       <div>
         <ClientOnly>
-          <HederaConnect />
+          <HederaConnect :signed-in-user="signedInUser" />
 
           <template #fallback>
             <div flex items-center gap-2>
