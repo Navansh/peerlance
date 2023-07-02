@@ -18,13 +18,13 @@ async function sendTokenClicked(project: Project) {
   const user = auth.currentUser
 
   const { $toast } = useNuxtApp()
-  $toast.info('Initializing to send tokens...')
+  $toast.info('Initializing to send 評判 Tokens...')
 
-  $toast.info('Checking token association status')
+  $toast.info('Checking 評判 Token association status')
   const status = await associateToken(hederaData, project.User.hederaAccountId)
-  $toast.success(`Token associated | Status: ${status}`)
+  $toast.success(`評判 Token associated | Status: ${status}`)
 
-  $toast.info('Sending tokens...')
+  $toast.info('Sending 評判 tokens...')
   const { transactionId } = await transferToken(hederaData, project.User.hederaAccountId, Number(amount), project.name, project.projectId, user?.displayName || 'No Name')
 
   $toast.success(`評判 Tokens sent | Transaction ID: <a target="_blank" class="text-[#222c56] underline hover:decoration-double  hover:" href="https://hashscan.io/testnet/transaction/${transactionId}">${transactionId}</a>`, {
