@@ -7,7 +7,7 @@ export async function splitFileIntoChunksAndUploadToHedera(hederaData: HederaCom
   const chunks = splitStringBySize(base64Image)
 
   totalChunks.value = chunks.length
-  currentFileId.value = fileId.transactionId?.toString() || null
+  currentFileId.value = fileId.fileId?.toString() || null
   currentFileTransactionId.value = fileId.transactionId?.toString() || null
   consola.withTag('FileChunker').info('Chunks:', chunks.length)
 
