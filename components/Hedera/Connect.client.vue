@@ -1,9 +1,38 @@
 <script setup lang="ts">
+import type { User } from 'firebase/auth'
 import { isWalletAvailable, isWalletConnected, userAccountId } from '@/lib/hedera/wallet/store'
 import { connectToWallet, hashconnect, initHashConnect } from '@/lib/hedera/wallet/init'
 
-await initHashConnect()
+const props = defineProps<{
+  signedInUser: User | null
+}>()
+
 consola.withTag('Hedera').info('init: ', hashconnect)
+
+onMounted(async () => {
+  await initHashConnect()
+})
+
+watch(userAccountId, async (newUserAccountId) => {
+  consola.withTag('Hedera').info('newUserAccountId: ', newUserAccountId)
+  if (!newUserAccountId)
+    return
+
+  consola.withTag('Hedera').info('userAccountId: ', newUserAccountId)
+  const data = await $fetch('/api/user', {
+    method: 'POST',
+    body: {
+      hederaAccountId: newUserAccountId,
+      name: props.signedInUser?.displayName,
+      email: props.signedInUser?.email,
+      userId: props.signedInUser?.uid,
+    },
+  })
+
+  consola.withTag('Register user API').info('data: ', data)
+
+  navigateTo('/dashboard')
+})
 </script>
 
 <template>

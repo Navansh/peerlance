@@ -16,6 +16,7 @@ export async function initHashConnect() {
 
   if (previousData.savedPairings.length)
     userAccountId.value = previousData.savedPairings[0].accountIds[0]
+  isWalletConnected.value = true
 }
 
 hashconnect.foundExtensionEvent.once(() => {
