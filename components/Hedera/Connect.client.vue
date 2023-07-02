@@ -13,16 +13,18 @@ onMounted(async () => {
   await initHashConnect()
 })
 
-watch(userAccountId, async (newUserAccountId) => {
-  consola.withTag('Hedera').info('newUserAccountId: ', newUserAccountId)
-  if (!newUserAccountId)
+watch(userAccountId, async () => {
+  consola.withTag('Hedera').info('newUserAccountId: ', userAccountId.value)
+  if (!userAccountId.value) {
+    consola.withTag('Hedera').info('userAccountId is empty')
     return
+  }
 
-  consola.withTag('Hedera').info('userAccountId: ', newUserAccountId)
+  consola.withTag('Hedera').info('userAccountId: ', userAccountId.value)
   const data = await $fetch('/api/user', {
     method: 'POST',
     body: {
-      hederaAccountId: newUserAccountId,
+      hederaAccountId: userAccountId.value,
       name: props.signedInUser?.displayName,
       email: props.signedInUser?.email,
       userId: props.signedInUser?.uid,
