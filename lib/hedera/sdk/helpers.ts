@@ -1,4 +1,4 @@
-import { type Client, FileAppendTransaction, FileCreateTransaction, Hbar, TopicCreateTransaction } from '@hashgraph/sdk'
+import { type Client, FileAppendTransaction, FileContentsQuery, FileCreateTransaction, Hbar, TopicCreateTransaction } from '@hashgraph/sdk'
 import type { HederaComposable } from '@/composables/useHederaClient'
 
 export async function createTopic(client: Client, projectName: string) {
@@ -47,4 +47,15 @@ export async function appendToFile(hederaData: HederaComposable, fileId: string,
     transactionId: txResponse.transactionId,
     transactionStatus,
   }
+}
+
+export async function getFileContents(hederaData: HederaComposable, fileId: string) {
+  const client = hederaData.client
+  const fileContentsQuery = new FileContentsQuery()
+    .setFileId(fileId)
+
+  const contents = await fileContentsQuery.execute(client)
+  const decoded = new TextDecoder().decode(contents)
+
+  return decoded
 }

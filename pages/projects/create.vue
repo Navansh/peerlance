@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { splitFileIntoChunksAndUploadToHedera } from '@/utils/image'
 import { currentChunk, fileUploadTransactions, totalChunks } from '@/lib/hedera/sdk/store'
+import { splitFileIntoChunksAndUploadToHedera } from '@/utils/image'
 
 const hederaData = useHederaClient()
 
