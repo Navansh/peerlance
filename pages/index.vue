@@ -9,7 +9,7 @@ const projects = ref<Project[]>([])
 
 async function sendTokenClicked(project: Project) {
   // eslint-disable-next-line no-alert
-  const amount = prompt(`How many tokens do you want to send to ${project.User.name} | Account ID: ${project.User.hederaAccountId}`)
+  const amount = prompt(`How many 評判 tokens do you want to send to ${project.User.name} | Account ID: ${project.User.hederaAccountId}`)
 
   if (!amount)
     return
@@ -27,7 +27,7 @@ async function sendTokenClicked(project: Project) {
   $toast.info('Sending tokens...')
   const { transactionId } = await transferToken(hederaData, project.User.hederaAccountId, Number(amount), project.name, project.projectId, user?.displayName || 'No Name')
 
-  $toast.success(`Tokens sent | Transaction ID: <a target="_blank" class="text-[#222c56] underline hover:decoration-double  hover:" href="https://hashscan.io/testnet/transaction/${transactionId}">${transactionId}</a>`, {
+  $toast.success(`評判 Tokens sent | Transaction ID: <a target="_blank" class="text-[#222c56] underline hover:decoration-double  hover:" href="https://hashscan.io/testnet/transaction/${transactionId}">${transactionId}</a>`, {
     duration: 10000,
     pauseOnHover: true,
   })
