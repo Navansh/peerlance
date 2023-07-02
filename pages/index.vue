@@ -41,9 +41,6 @@ onMounted(async () => {
 
     const serverProjects = await $fetch('/api/projects', {
       method: 'GET',
-      query: {
-        userId: auth.currentUser.uid,
-      },
     })
 
     consola.info('projects', serverProjects)
