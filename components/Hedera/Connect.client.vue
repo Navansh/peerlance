@@ -31,7 +31,7 @@ watch(userAccountId, async (newUserAccountId) => {
 
   consola.withTag('Register user API').info('data: ', data)
 
-  navigateTo('/dashboard')
+  navigateTo('/')
 })
 </script>
 
